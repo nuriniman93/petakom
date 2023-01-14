@@ -50,12 +50,12 @@
         <div class="wrapper">
             <div class="sidebar">
                 <ul>
-                    <li><a href="/homepage">Dashboard</a></li>
+                    <li><a href="/">Dashboard</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Calendar</a></li>
                     <li><a href="#">Proposal</a></li>
                     <li><a href="#">Activity</a></li>
-                    <li><a href="/">Committee Election</a></li>
+                    <li><a href="/Manage Committee Election/Student/StudCandidateListPage">Committee Election</a></li>
                     <li><a href="#">Bulletin</a></li>
                 </ul> 
             </div>
@@ -70,7 +70,9 @@
                     <a href="VotingPage">
                         <button class="button button2">Vote</button>
                     </a>
-                    <button class="button button2">Result</button>
+                    <a href="ElectionResultPage">
+                        <button class="button button2">Result</button>
+                    </a>>
                 </div>
                 <div class="center">
                     <div >
