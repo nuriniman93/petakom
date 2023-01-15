@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function(){
     return view('homepage');
 });
@@ -31,6 +30,10 @@ Route::get('/Manage Committee Election/Student/StudCandidateListPage', function 
 
 Route::get('/Manage Committee Election/Student/VotingPage', function () {
     return view('Manage Committee Election/Student/VotingPage');
+});
+
+Route::get('/Manage Committee Election/Student/ElectionResultPage', function () {
+    return view('Manage Committee Election/Student/ElectionResultPage');
 });
 
 Route::middleware([
