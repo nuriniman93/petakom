@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,19 +28,19 @@
 
     <body class="antialiased">
         <div>
-            @if (Route::has('login'))
+            <?php if(Route::has('login')): ?>
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                    <?php if(auth()->guard()->check()): ?>
+                        <a href="<?php echo e(url('/dashboard')); ?>" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                    <?php else: ?>
+                        <a href="<?php echo e(route('login')); ?>" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+                        <?php if(Route::has('register')): ?>
+                            <a href="<?php echo e(route('register')); ?>" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
-            @endif
+            <?php endif; ?>
         </div>
 
         <header class="title">
@@ -54,7 +54,7 @@
                     <li><a href="/homepage">Dashboard</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Calendar</a></li>
-                    <li><a href="/Manage Proposal/proposalMenuPage">Proposal</a></li>
+                    <li><a href="/proposalMenuPage">Proposal</a></li>
                     <li><a href="#">Activity</a></li>
                     <li><a href="#">Committee Election</a></li>
                     <li><a href="#">Bulletin</a></li>
@@ -63,46 +63,41 @@
 
             <div class="main_content">
                 <div class="bulletin-content">
-                    <form>
+                    <form action="updateProposalPage/<?php echo e($proposals->ProposalID); ?>" method="POST" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
                         <div class="title-body">
-                            <h2>Add New Proposal</h2>
+                            <h2>Edit Proposal</h2>
                         </div>
 
                         <div class="add-form">
-                            <div class="left-input">
-                                <label for="ftitle">Title</label>
-                                <input type="text" class="add-input" id="ftitle" name="ftitle" placeholder="Enter title">
+                                <input type="hidden" name="ProposalID" id="ProposalID" value="<?php echo e($proposals->ProposalID); ?>">
+                        
+                                <label for="proposal_title">Title</label>
+                                <input type="text" class="add-input" id="proposal_title" name="proposal_title"  value="<?php echo e($proposals->proposal_title); ?>">
 
-                                <label for="fdesc">Description</label>
-                                <textarea class="add-input" id="fdesc" name="fdesc" rows="6" cols="50" placeholder="Enter description"></textarea>
+                                <label for="proposal_descrption">Description</label>
+                                <textarea class="add-input" id="proposal_descrption" name="proposal_descrption" rows="6" cols="50"><?php echo e($proposals->proposal_descrption); ?></textarea>
 
-                                <label for="fobjctv">Objectives</label>
-                                <textarea class="add-input" id="fobjctv" name="fobjctv" rows="6" cols="50" placeholder="Enter objectives of programme"></textarea>
+                                <label for="proposal_objectives">Objectives</label>
+                                <textarea class="add-input" id="proposal_objectives" name="proposal_objectives" rows="6" cols="50"><?php echo e($proposals->proposal_objectives); ?></textarea>
 
-                                <label for="fpdate">Proposed Date</label>
-                                <input  class="add-input" type="date" id="fpdate" name="fpdate">
+                                <label for="proposed_date">Proposed Date</label>
+                                <input  class="add-input" type="date" id="proposed_date" name="proposed_date"  value="<?php echo e($proposals->proposed_date); ?>">
 
-                                <label for="fbdgt">Budget</label>
-                                <input type="text" class="add-input" id="fbdgt" name="fbdgt" placeholder="Enter RM">
+                                <label for="proposed_budget">Budget</label>
+                                <input type="text" class="add-input" id="proposed_budget" name="proposed_budget"  value="<?php echo e($proposals->proposal_budget); ?>">
 
-                                <label for="fauthor">Author</label>
-                                    <input type="text" class="add-input" id="fauthor" name="fauthor" placeholder="Enter Author">
+                                <label for="proposed_author">Author</label>
+                                    <input type="text" class="add-input" id="proposed_author" name="proposed_author"  value="<?php echo e($proposals->proposal_author); ?>">
 
-                            </div>
-
-                            <div class="right-input">
                                     <label for="fimage" style="margin-bottom: 10px;">Proposal File</label> 
-                                    <input type="file" multiple>
-                                    <p>Drag your files here or click in this area.</p>
-                                    <button type="">Upload</button><br>
+                                    <input type="file" value="<?php echo e($proposals->proposal_file); ?>">                                     
+                                    <a href="/public/files/proposalFile/<?php echo e($proposals->proposal_file); ?>" download> <?php echo e($proposals->proposal_file); ?></a>
 
-                                    
-                                    
-                            </div>
                         </div>
 
-                        <a href="Manage Proposal/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Cancel</button></a>
-                        <a href="Manage Proposal/addProposalPage"><button type="submit" class="addbtn1" id="addbtn1" name="addbtn1">Add</button></a>
+                        <a href="/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Cancel</button></a>
+                        <button type="submit" class="updatebtn" id="updatebtn" name="updatebtn">Update</button>
                         
                             
                     </form>
@@ -114,4 +109,4 @@
             © 2022 Petakom Management System, Malaysia
         </footer>
     </body>
-</html>
+</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/ManageProposal/editProposalPage.blade.php ENDPATH**/ ?>

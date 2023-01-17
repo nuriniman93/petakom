@@ -54,7 +54,7 @@
                     <li><a href="/homepage">Dashboard</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Calendar</a></li>
-                    <li><a href="/Manage Proposal/proposalMenuPage">Proposal</a></li>
+                    <li><a href="/proposalMenuPage">Proposal</a></li>
                     <li><a href="#">Activity</a></li>
                     <li><a href="#">Committee Election</a></li>
                     <li><a href="#">Bulletin</a></li>
@@ -63,53 +63,44 @@
 
             <div class="main_content">
                 <div class="bulletin-content">
+                    <form action="updateProposalPage/{{$proposals->ProposalID}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="title-body">
-                            <h2>View Proposal</h2>
+                            <h2>Edit Proposal</h2>
                         </div>
 
                         <div class="add-form">
-                            <div class="left-input">
-                                <table>
-                                
-                                    <tr>
-                                        <td><label for="ftitle">Title</label></td>
-                                        <td><p id="ftitle" name="ftitle">: Test</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="fdesc">Description</label></td>
-                                        <td><p id="fdesc" name="fdesc">: Test</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="fobjctv">Objectives</label></td>
-                                        <td><p id="fobjctv" name="fobjctv">: Test</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="fpdate">Proposed Date</label></td>
-                                        <td><p id="fpdate" name="fpdate">: Test</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="fbdgt">Budget</label></td>
-                                        <td><p id="fbdgt" name="fbdgt">: Test</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="fauthor">Author</label></td>
-                                        <td><p id="fauthor" name="fauthor">: Test</p></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="fimage" style="margin-bottom: 10px;">Proposal File</label></td>
-                                        <td><a class="aalink" onclick="" href="https://utt.edu.tt/documents/files/9th_edf_project_proposal_template.pdf"><img src="https://icons8.com/icon/299/pdf" class="iconlarge activityicon" alt="" role="presentation" aria-hidden="true">
-                                            <span class="instancename">: Proposal File<span class="accesshide"> View</span></span></a></td>
-                                    </tr>
-                                </table>
-                            </div>
+                                <input type="hidden" name="ProposalID" id="ProposalID" value="{{$proposals->ProposalID}}">
+                        
+                                <label for="proposal_title">Title</label>
+                                <input type="text" class="add-input" id="proposal_title" name="proposal_title"  value="{{ $proposals->proposal_title }}">
 
-                            <div class="right-input">
+                                <label for="proposal_descrption">Description</label>
+                                <textarea class="add-input" id="proposal_descrption" name="proposal_descrption" rows="6" cols="50">{{ $proposals->proposal_descrption }}</textarea>
 
-                            </div>
+                                <label for="proposal_objectives">Objectives</label>
+                                <textarea class="add-input" id="proposal_objectives" name="proposal_objectives" rows="6" cols="50">{{ $proposals->proposal_objectives }}</textarea>
+
+                                <label for="proposed_date">Proposed Date</label>
+                                <input  class="add-input" type="date" id="proposed_date" name="proposed_date"  value="{{ $proposals->proposed_date }}">
+
+                                <label for="proposed_budget">Budget</label>
+                                <input type="text" class="add-input" id="proposed_budget" name="proposed_budget"  value="{{ $proposals->proposal_budget }}">
+
+                                <label for="proposed_author">Author</label>
+                                    <input type="text" class="add-input" id="proposed_author" name="proposed_author"  value="{{ $proposals->proposal_author }}">
+
+                                    <label for="fimage" style="margin-bottom: 10px;">Proposal File</label> 
+                                    <input type="file" value="{{ $proposals->proposal_file }}">                                     
+                                    <a href="/public/files/proposalFile/{{ $proposals->proposal_file }}" download> {{ $proposals->proposal_file }}</a>
+
                         </div>
 
-                        <a href="/Manage Proposal/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Back</button></a>
-
+                        <a href="/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Cancel</button></a>
+                        <button type="submit" class="updatebtn" id="updatebtn" name="updatebtn">Update</button>
+                        
+                            
+                    </form>
                 </div>
             </div>
         </div>

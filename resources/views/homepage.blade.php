@@ -50,7 +50,7 @@
                 <button class="button homepage">REGISTRATION</button>
             </a>            
             <button class="button homepage">CALENDAR</button>
-            <a href="Manage Proposal/proposalMenuPage">
+            <a href="/proposalMenuPage">
             <button class="button homepage">PROPOSAL</button>
             </a>
             <button class="button homepage">ACTIVITY</button>

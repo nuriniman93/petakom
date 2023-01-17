@@ -54,7 +54,7 @@
                     <li><a href="/homepage">Dashboard</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Calendar</a></li>
-                    <li><a href="/Manage Proposal/proposalMenuPage">Proposal</a></li>
+                    <li><a href="/ManageProposal/proposalMenuPage">Proposal</a></li>
                     <li><a href="#">Activity</a></li>
                     <li><a href="#">Committee Election</a></li>
                     <li><a href="#">Bulletin</a></li>
@@ -68,7 +68,7 @@
                             <i class="fa-light fa-magnifying-glass"></i>    
                             <input type="text" class="searchInput" id="searchInput" name="searchInput" placeholder="Search">
                             <button class="searchbtn" id="searchbtn" name="searchbtn">Search</button>
-                            <button class="addbtn" id="addbtn" name="addbtn"><a href='/Manage Proposal/addProposalPage'>Add New</a></button>
+                            <button class="addbtn" id="addbtn" name="addbtn"><a href='/ManageProposal/addProposalPage'>Add New</a></button>
                     </div>
 
                         <div class="list-table">
@@ -85,14 +85,16 @@
                                 </thead>
 
                                 <tbody>
+                                    <!-- Model ke interface-->
+                                    <?php $__currentLoopData = $proposals; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proposal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td>Test</td>
-                                        <td><a href="proposalDetailsPage">View</a></td>
+                                        <td><?php echo e($proposal->proposal_title); ?></td>
+                                        <td><?php echo e($proposal->proposal_author); ?></td>
+                                        <td><?php echo e($proposal->proposed_date); ?></td>
+                                        <td><?php echo e($proposal->status_dean); ?></td>
+                                        <td><a href="<?php echo e(route(ManageProposal.proposalDetailsPage, $proposal->ProposalID)); ?>">View</a></td>
                                     </tr>
-                                    
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                             </table>
                             <!-- if user Committee -->
@@ -113,7 +115,7 @@
                                         <td>Test</td>
                                         <td>Test</td>
                                         <td>Test</td>
-                                        <td><a href="proposalDetailsPage">View</a> | <a href="/Manage Proposal/editProposalPage">Edit</a> | <a href="#">Delete</a></td>
+                                        <td><a href="proposalDetailsPage">View</a> | <a href="/ManageProposal/editProposalPage">Edit</a> | <a href="#">Delete</a></td>
                                     </tr>
                                     
                                 </tbody>
@@ -230,4 +232,4 @@
             © 2022 Petakom Management System, Malaysia
         </footer>
     </body>
-</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/Manage Proposal/proposalMenuPage.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/ManageProposal/proposalMenuPage.blade.php ENDPATH**/ ?>

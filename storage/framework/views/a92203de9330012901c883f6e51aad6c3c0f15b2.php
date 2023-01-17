@@ -21,6 +21,8 @@
         </style>
         <link href="/css/style.css" rel="stylesheet">
         <link href="/css/nav.css" rel="stylesheet">
+        <link href="/css/pms.css" rel="stylesheet">
+        <link href="https://fontawesome.com/" rel="stylesheet">
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     </head>
 
@@ -42,31 +44,73 @@
         </div>
 
         <header class="title">
-             <img src="/images/petakom-logo.png" alt="Logo"/>
-            PETAKOM MANAGEMENT SYSTEMs
+             <img src="/images/petakom-logo.png" alt="Logo">
+            PETAKOM MANAGEMENT SYSTEM
         </header>
-        <div class= "home-container">
-            <a href="Manage Registration/RegNewMem">
-                <button class="button homepage">REGISTRATION</button>
-            </a>            
-            <button class="button homepage">CALENDAR</button>
-            <a href="/proposalMenuPage">
-            <button class="button homepage">PROPOSAL</button>
-            </a>
-            <button class="button homepage">ACTIVITY</button>
+        <!-- navigation bar -->
+        <div class="wrapper">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="/homepage">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="/ManageProposal/proposalMenuPage">Proposal</a></li>
+                    <li><a href="#">Activity</a></li>
+                    <li><a href="#">Committee Election</a></li>
+                    <li><a href="#">Bulletin</a></li>
+                </ul> 
+            </div>
 
-        </div>
-        <div class= "home-container">
-            <a href="Manage Committee Election/Student/StudCandidateListPage">
-                <button class="button homepage">COMMITTEE <br> ELECTION</button>
-            </a>
-            
-            <button class="button homepage">BULLETIN</button>
+            <div class="main_content">
+                <div class="bulletin-content">
+                        <div class="title-body">
+                            <h2>View Proposal</h2>
+                        </div>
 
+                        <div class="add-form">
+                           
+                                <table>
+                                
+                                    <tr>
+                                        <td><label for="proposal_title">Title</label></td>
+                                        <td><p id="proposal_title" name="proposal_title">: <?php echo e($proposals->proposal_title); ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="proposal_descrption">Description</label></td>
+                                        <td><p id="proposal_descrption" name="proposal_descrption">: <?php echo e($proposals->proposal_descrption); ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="proposal_objectives">Objectives</label></td>
+                                        <td><p id="proposal_objectives" name="proposal_objectives">: <?php echo e($proposals->proposal_objectives); ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="proposed_date">Proposed Date</label></td>
+                                        <td><p id="proposed_date" name="proposed_date">: <?php echo e($proposals->proposed_date); ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="proposed_budget">Budget</label></td>
+                                        <td><p id="proposed_budget" name="proposed_budget">: RM <?php echo e($proposals->proposal_budget); ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="proposed_author">Author</label></td>
+                                        <td><p id="proposed_author" name="proposed_author">: <?php echo e($proposals->proposal_author); ?></p></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="fimage" style="margin-bottom: 10px;">Proposal File</label></td>
+                                        <td><a href="/public/files/proposalFile/<?php echo e($proposals->proposal_file); ?>" download>: <?php echo e($proposals->proposal_file); ?></a></td>
+                                    </tr>
+                                </table>
+                           
+                        </div>
+
+                        <a href="/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Back</button></a>
+
+                </div>
+            </div>[]
         </div>
+
         <footer class="footer">
             © 2022 Petakom Management System, Malaysia
         </footer>
     </body>
-</html>
-<?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/homepage.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/ManageProposal/proposalDetailsPage.blade.php ENDPATH**/ ?>

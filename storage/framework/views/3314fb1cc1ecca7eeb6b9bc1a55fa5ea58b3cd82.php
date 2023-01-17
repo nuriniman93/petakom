@@ -54,7 +54,7 @@
                     <li><a href="/homepage">Dashboard</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Calendar</a></li>
-                    <li><a href="Manage Proposal/proposalMenuPage">Proposal</a></li>
+                    <li><a href="ManageProposal/proposalMenuPage">Proposal</a></li>
                     <li><a href="#">Activity</a></li>
                     <li><a href="#">Committee Election</a></li>
                     <li><a href="#">Bulletin</a></li>
@@ -101,8 +101,8 @@
                             </div>
                         </div>
 
-                        <a href="Manage Proposal/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Cancel</button></a>
-                        <a href="Manage Proposal/editProposalPage"><button class="updatebtn" id="updatebtn" name="updatebtn">Update</button></a>
+                        <a href="ManageProposal/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Cancel</button></a>
+                        <a href="ManageProposal/editProposalPage"><button class="updatebtn" id="updatebtn" name="updatebtn">Update</button></a>
                         
                             
                     </form>
@@ -114,4 +114,4 @@
             © 2022 Petakom Management System, Malaysia
         </footer>
     </body>
-</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/Manage Proposal/editProposalPage.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/ManageProposal/editProposalPage.blade.php ENDPATH**/ ?>

@@ -54,7 +54,7 @@
                     <li><a href="/homepage">Dashboard</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Calendar</a></li>
-                    <li><a href="/Manage Proposal/proposalMenuPage">Proposal</a></li>
+                    <li><a href="/proposalMenuPage">Proposal</a></li>
                     <li><a href="#">Activity</a></li>
                     <li><a href="#">Committee Election</a></li>
                     <li><a href="#">Bulletin</a></li>
@@ -63,46 +63,42 @@
 
             <div class="main_content">
                 <div class="bulletin-content">
-                    <form>
+                    <form action="{{url('proposal')}}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="title-body">
-                            <h2>Edit Proposal</h2>
+                            <h2>Add New Proposal</h2>
                         </div>
+
+                        @if (session('status'))
+                            <h5 class="alert alert-success">{{session('status')}}</h5>                            
+                        @endif
 
                         <div class="add-form">
-                            <div class="left-input">
-                                <label for="ftitle">Title</label>
-                                <input type="text" class="add-input" id="ftitle" name="ftitle" placeholder="Enter title">
+                            
+                                <label for="proposal_title">Title</label>
+                                <input type="text" class="add-input" id="proposal_title" name="proposal_title" placeholder="Enter title">
 
-                                <label for="fdesc">Description</label>
-                                <textarea class="add-input" id="fdesc" name="fdesc" rows="6" cols="50" placeholder="Enter description"></textarea>
+                                <label for="proposal_descrption">Description</label>
+                                <textarea class="add-input" id="proposal_descrption" name="proposal_descrption" rows="6" cols="50" placeholder="Enter description"></textarea>
 
-                                <label for="fobjctv">Objectives</label>
-                                <textarea class="add-input" id="fobjctv" name="fobjctv" rows="6" cols="50" placeholder="Enter objectives of programme"></textarea>
+                                <label for="proposal_objectives">Objectives</label>
+                                <textarea class="add-input" id="proposal_objectives" name="proposal_objectives" rows="6" cols="50" placeholder="Enter objectives of programme"></textarea>
 
-                                <label for="fpdate">Proposed Date</label>
-                                <input  class="add-input" type="date" id="fpdate" name="fpdate">
+                                <label for="proposed_date">Proposed Date</label>
+                                <input  class="add-input" type="date" id="proposed_date" name="proposed_date">
 
-                                <label for="fbdgt">Budget</label>
-                                <input type="text" class="add-input" id="fbdgt" name="fbdgt" placeholder="Enter RM">
+                                <label for="proposal_budget">Budget</label>
+                                <input type="number" class="add-input" id="proposal_budget" name="proposal_budget" placeholder="Enter RM">
 
-                                <label for="fauthor">Author</label>
-                                    <input type="text" class="add-input" id="fauthor" name="fauthor" placeholder="Enter Author">
+                                <label for="proposal_author">Author</label>
+                                    <input type="text" class="add-input" id="proposal_author" name="proposal_author" placeholder="Enter Author">
 
-                            </div>
-
-                            <div class="right-input">
                                     <label for="fimage" style="margin-bottom: 10px;">Proposal File</label> 
-                                    <input type="file" multiple>
-                                    <p>Drag your files here or click in this area.</p>
-                                    <button type="submit">Upload</button><br>
-
-                                    
-                                    
-                            </div>
+                                    <input type="file" id="proposal_file" name="proposal_file" multiple>
+                            
                         </div>
-
-                        <a href="Manage Proposal/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Cancel</button></a>
-                        <a href="Manage Proposal/editProposalPage"><button class="updatebtn" id="updatebtn" name="updatebtn">Update</button></a>
+                        <button class="cancelbtn" id="cancelbtn" name="cancelbtn"><a href="/proposalMenuPage">Cancel</a></button>
+                        <button type="submit" class="addbtn1" id="addbtn1" name="addbtn1">Add</button>
                         
                             
                     </form>

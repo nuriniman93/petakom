@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProposalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,52 +63,34 @@ Route::get('/Manage Activity/activityDetailsUsersPage', function(){
 });
 
 /* Nurin Iman */
-//Routes for Manage Proposal
-Route::get('/Manage Proposal/addProposalPage', function(){
-    return view('Manage Proposal/addProposalPage');
+//Routes for ManageProposal
+Route::resource("proposal", ProposalController::class);
+Route::get('proposalMenuPage', [App\Http\Controllers\ProposalController::class,'index']);
+Route::get('editProposalPage/{ProposalID}', [App\Http\Controllers\ProposalController::class,'edit']);
+
+Route::post('editProposalPage/updateProposalPage/{ProposalID}', [App\Http\Controllers\ProposalController::class,'update']);
+Route::get('addProposalPage', [App\Http\Controllers\ProposalController::class,'create']);
+Route::post('addProposalPage', [App\Http\Controllers\ProposalController::class,'store']);
+Route::get('destroyProposal/{ProposalID}', [App\Http\Controllers\ProposalController::class,'destroy'])->name('destroy-proposal');
+Route::get('update-status', [App\Http\Controllers\ProposalController::class,'updateStatus'])->name('update-status');
+
+
+//go to page
+Route::get('/ManageProposal/addProposalPage', function(){
+    return view('ManageProposal/addProposalPage');
 });
 
-Route::get('/Manage Proposal/editProposalPage', function(){
-    return view('Manage Proposal/editProposalPage');
+Route::get('/ManageProposal/editProposalPage', function(){
+    return view('ManageProposal/editProposalPage');
 });
 
-Route::get('/Manage Proposal/proposalDetailsPage', function(){
-    return view('Manage Proposal/proposalDetailsPage');
+Route::get('/ManageProposal/proposalDetailsPage', function(){
+    return view('ManageProposal/proposalDetailsPage');
 });
 
-Route::get('/Manage Proposal/proposalMenuPage', function(){
-    return view('Manage Proposal/proposalMenuPage');
+Route::get('/ManageProposal/proposalMenuPage', function(){
+    return view('ManageProposal/proposalMenuPage');
 });
-
-/*Route::prefix('Manage Proposal')->name("Manage Proposal.")->group(function(){
-    Route::get('/user', function () {
-        return "user";
-        //URI: /staff/user
-        //Route name: staff.
-    })->name("index");
-    Route::post('/user', function () {
-        return "user";
-        //URI: /staff/user
-        //Route name: staff.index
-    });
-    Route::get('/user/{id}', function ($id) {
-        return "user/".$id;
-        //URI: /staff/user/1
-    })->name("dashboard");
-    Route::put('/user/{id}', function ($id) {
-        return "user/".$id." put";
-    });
-    Route::delete('/user/{id}', function ($id) {
-        return "user/".$id." delete";
-    });
-    Route::get('/user/{id}/edit', function ($id) {
-        return "user/".$id."/edit";
-    })->name("edit");
-    Route::get('/user/{id}/create', function ($id) {
-        return "user/".$id."/create";
-    })->name("create");
-    
-});*/
 
 
 Route::middleware([

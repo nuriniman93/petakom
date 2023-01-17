@@ -21,6 +21,8 @@
         </style>
         <link href="/css/style.css" rel="stylesheet">
         <link href="/css/nav.css" rel="stylesheet">
+        <link href="/css/pms.css" rel="stylesheet">
+        <link href="https://fontawesome.com/" rel="stylesheet">
         <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     </head>
 
@@ -42,31 +44,70 @@
         </div>
 
         <header class="title">
-             <img src="/images/petakom-logo.png" alt="Logo"/>
-            PETAKOM MANAGEMENT SYSTEMs
+             <img src="/images/petakom-logo.png" alt="Logo">
+            PETAKOM MANAGEMENT SYSTEM
         </header>
-        <div class= "home-container">
-            <a href="Manage Registration/RegNewMem">
-                <button class="button homepage">REGISTRATION</button>
-            </a>            
-            <button class="button homepage">CALENDAR</button>
-            <a href="/proposalMenuPage">
-            <button class="button homepage">PROPOSAL</button>
-            </a>
-            <button class="button homepage">ACTIVITY</button>
+        <!-- navigation bar -->
+        <div class="wrapper">
+            <div class="sidebar">
+                <ul>
+                    <li><a href="/homepage">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="/proposalMenuPage">Proposal</a></li>
+                    <li><a href="#">Activity</a></li>
+                    <li><a href="#">Committee Election</a></li>
+                    <li><a href="#">Bulletin</a></li>
+                </ul> 
+            </div>
 
-        </div>
-        <div class= "home-container">
-            <a href="Manage Committee Election/Student/StudCandidateListPage">
-                <button class="button homepage">COMMITTEE <br> ELECTION</button>
-            </a>
-            
-            <button class="button homepage">BULLETIN</button>
+            <div class="main_content">
+                <div class="bulletin-content">
+                    <form action="<?php echo e(url('proposal')); ?>" method="post" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
+                        <div class="title-body">
+                            <h2>Add New Proposal</h2>
+                        </div>
 
+                        <?php if(session('status')): ?>
+                            <h5 class="alert alert-success"><?php echo e(session('status')); ?></h5>                            
+                        <?php endif; ?>
+
+                        <div class="add-form">
+                            
+                                <label for="proposal_title">Title</label>
+                                <input type="text" class="add-input" id="proposal_title" name="proposal_title" placeholder="Enter title">
+
+                                <label for="proposal_descrption">Description</label>
+                                <textarea class="add-input" id="proposal_descrption" name="proposal_descrption" rows="6" cols="50" placeholder="Enter description"></textarea>
+
+                                <label for="proposal_objectives">Objectives</label>
+                                <textarea class="add-input" id="proposal_objectives" name="proposal_objectives" rows="6" cols="50" placeholder="Enter objectives of programme"></textarea>
+
+                                <label for="proposed_date">Proposed Date</label>
+                                <input  class="add-input" type="date" id="proposed_date" name="proposed_date">
+
+                                <label for="proposal_budget">Budget</label>
+                                <input type="number" class="add-input" id="proposal_budget" name="proposal_budget" placeholder="Enter RM">
+
+                                <label for="proposal_author">Author</label>
+                                    <input type="text" class="add-input" id="proposal_author" name="proposal_author" placeholder="Enter Author">
+
+                                    <label for="fimage" style="margin-bottom: 10px;">Proposal File</label> 
+                                    <input type="file" id="proposal_file" name="proposal_file" multiple>
+                            
+                        </div>
+                        <button class="cancelbtn" id="cancelbtn" name="cancelbtn"><a href="/proposalMenuPage">Cancel</a></button>
+                        <button type="submit" class="addbtn1" id="addbtn1" name="addbtn1">Add</button>
+                        
+                            
+                    </form>
+                </div>
+            </div>
         </div>
+
         <footer class="footer">
             © 2022 Petakom Management System, Malaysia
         </footer>
     </body>
-</html>
-<?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/homepage.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/ManageProposal/addProposalPage.blade.php ENDPATH**/ ?>

@@ -54,7 +54,7 @@
                     <li><a href="/homepage">Dashboard</a></li>
                     <li><a href="#">Profile</a></li>
                     <li><a href="#">Calendar</a></li>
-                    <li><a href="/Manage Proposal/proposalMenuPage">Proposal</a></li>
+                    <li><a href="/ManageProposal/proposalMenuPage">Proposal</a></li>
                     <li><a href="#">Activity</a></li>
                     <li><a href="#">Committee Election</a></li>
                     <li><a href="#">Bulletin</a></li>
@@ -108,7 +108,7 @@
                             </div>
                         </div>
 
-                        <a href="/Manage Proposal/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Back</button></a>
+                        <a href="/ManageProposal/proposalMenuPage"><button class="cancelbtn" id="cancelbtn" name="cancelbtn">Back</button></a>
 
                 </div>
             </div>
@@ -118,4 +118,4 @@
             © 2022 Petakom Management System, Malaysia
         </footer>
     </body>
-</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/Manage Proposal/proposalDetailsPage.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\Users\User\Documents\GitHub\petakom\resources\views/ManageProposal/proposalDetailsPage.blade.php ENDPATH**/ ?>
